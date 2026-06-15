@@ -1,4 +1,4 @@
-# Recovery — Backtesting Pipeline
+# Recovery Backtesting Pipeline
 
 Pipeline de backtesting pour une stratégie **Zone Recovery** sur EUR/USD 1H.
 
