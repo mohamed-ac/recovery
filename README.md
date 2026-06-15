@@ -37,3 +37,8 @@ Sharpe, CAGR, Max Drawdown, Calmar, Win Rate, RRR, EV, n_sl_max_recov
 ## Stack
 
 Python · Streamlit · Plotly · Pandas
+
+## Screenshots
+![equity curve](screenshots/equity_curve.png)
+![PnL](screenshots/pnl.png)
+
