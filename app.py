@@ -32,8 +32,8 @@ with st.sidebar:
     use_fixed_vol = st.checkbox("Vol marché fixe (au lieu de l'ATR historique)")
     fixed_vol     = None
     if use_fixed_vol:
-        fixed_vol = st.number_input("Vol fixe (même unité que le prix, ex: 0.0010)",
-                                    value=0.0010, step=0.0001, format="%.4f")
+        fixed_vol = st.number_input("Vol fixe (% du spot, ex: 0.10 = 10%)",
+                                    value=0.10, step=0.01, format="%.4f")
 
     st.markdown("---")
     max_margin = st.number_input("Marge max autorisée (€)", value=50000, step=1000)
@@ -48,8 +48,8 @@ if run_btn:
     strat = ZoneRecoveryStrategy(df, k_inner=k_inner, k_outer=k_outer, atr_period=atr_window)
 
     if use_fixed_vol:
-        # bypass ATR : vol fixe constante, aucun historique requis
-        strat._compute_atr = lambda: pd.Series(fixed_vol, index=df.index)
+        # bypass ATR : vol fixe en % du spot, aucun historique requis
+        strat._compute_atr = lambda: df["close"] * fixed_vol
 
     events = strat.run()
 
